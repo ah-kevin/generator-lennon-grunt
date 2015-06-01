@@ -1,6 +1,6 @@
 {
   "name": "generator-lennon-grunt",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Yeoman generator lennon grunt",
   "license": "MIT",
   "main": "app/index.js",
@@ -29,7 +29,8 @@
     "chalk": "^1.0.0",
     "cheerio": "^0.18.0",
     "yeoman-generator": "^0.18.9",
-    "yosay": "^1.0.2"
+    "yosay": "^1.0.2",
+    "wiredep": "^2.2.2"
   },
   "devDependencies": {
     "grunt-cli": "^0.1.13",
