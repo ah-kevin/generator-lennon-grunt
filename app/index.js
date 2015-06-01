@@ -4,9 +4,19 @@ var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 
 module.exports = yeoman.generators.Base.extend({
+
   constructor: function () {
     yeoman.generators.Base.apply(this, arguments);
 
+    this.option('skip-install', {
+      desc: 'Skips the installation of dependencies',
+      type: Boolean
+    });
+
+    this.option('skip-install-message', {
+      desc: 'Skips the message after the installation of dependencies',
+      type: Boolean
+    });
     this.pkg = require('../package.json');
   },
 
@@ -158,7 +168,7 @@ module.exports = yeoman.generators.Base.extend({
 
   install: function () {
     this.on('end', function () {
-      if (!this.options['skip-install']) {
+      if (this.options['skip-install']) {
         this.installDependencies({
           skipMessage: this.options['skip-install-message'],
           skipInstall: this.options['skip-install']
