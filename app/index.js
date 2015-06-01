@@ -1,5 +1,5 @@
 'use strict';
-var join = require('path').join;
+var join = require('path');
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 
@@ -182,14 +182,41 @@ module.exports = yeoman.generators.Base.extend({
         this.log(howToInstall);
          return;
     }
+    this.installDependencies({
+      skipMessage: this.options['skip-install-message'],
+      skipInstall: this.options['skip-install']
+    });
 
     this.on('end', function () {
-      if (this.options['skip-install']) {
-        this.installDependencies({
-          skipMessage: this.options['skip-install-message'],
-          skipInstall: this.options['skip-install']
+      var bowerJson = this.dest.readJSON('bower.json');
+
+      // wire Bower packages to .html
+      wiredep({
+        bowerJson: bowerJson,
+        directory: 'bower_components',
+        exclude: ['bootstrap-sass', 'bootstrap.js'],
+        ignorePath: /^(\.\.\/)*\.\./,
+        src: 'app/index.html'
+      });
+
+      if (this.includeSass) {
+        // wire Bower packages to .scss
+        wiredep({
+          bowerJson: bowerJson,
+          directory: 'bower_components',
+          ignorePath: /^(\.\.\/)+/,
+          src: 'app/styles/*.scss'
         });
       }
-    });
+      // ideally we should use composeWith, but we're invoking it here
+      // because generator-mocha is changing the working directory
+      // https://github.com/yeoman/generator-mocha/issues/28
+      //this.invoke(this.options['test-framework'], {
+      //  options: {
+      //    'skip-message': this.options['skip-install-message'],
+      //    'skip-install': this.options['skip-install']
+      //  }
+      //});
+    }.bind(this));
   }
 });
