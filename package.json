@@ -1,6 +1,6 @@
 {
   "name": "generator-lennon-grunt",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Yeoman generator lennon grunt",
   "license": "MIT",
   "main": "app/index.js",
