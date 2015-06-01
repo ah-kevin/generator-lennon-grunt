@@ -16,12 +16,12 @@
 * Bootstrap for Sass (Optional)
 * Leaner Modernizr builds (Optional)
 
-For more information on what `generator-lennon-grunt` .
+For more information on what `generator-webapp` can do for you, take a look at the [Grunt tasks](https://github.com/yeoman/generator-webapp/blob/master/app/templates/_package.json) used in our `package.json`.
 
 
 ## Getting Started
 
-- Install: `npm install -g generator-lennon-grunt`
+- Install: `npm install -g generator-webapp`
 - Run: `yo webapp`
 - Run `grunt` for building and `grunt serve` for preview[\*](#grunt-serve-note). `--allow-remote` option for remote access.
 
@@ -43,6 +43,7 @@ To manually add dependencies, `bower install --save depName` to get the files, t
 
 The components are installed in the root of the project at `/bower_components`. To reference them from index.html, use `src="bower_components"` or `src="/bower_components"`. Treat the `bower_components` directory as if it was a sibling to `index.html`.
 
+*Testing Note*: a project checked into source control and later checked out needs to have `bower install` run from the `test` folder as well as from the project root.
 
 
 #### Grunt Serve Note
@@ -61,7 +62,13 @@ We have [recipes](docs/recipes) for integrating other popular technologies like 
 
   Skips the automatic execution of `bower` and `npm` after scaffolding has finished.
 
+* `--test-framework=<framework>`
 
+  Defaults to `mocha`. Can be switched for another supported testing framework like `jasmine`.
+
+* `--coffee`
+
+  Add support for [CoffeeScript](http://coffeescript.org/).
 
 
 ## Contribute
@@ -70,7 +77,7 @@ See the [contributing docs](https://github.com/yeoman/yeoman/blob/master/contrib
 
 Note: We are regularly asked whether we can add or take away features. If a change is good enough to have a positive impact on all users, we are happy to consider it.
 
-If not, `generator-lennon-grunt` is fork-friendly and you can always maintain a custom version which you `npm install && npm link` to continue using via `yo webapp` or a name of your choosing.
+If not, `generator-webapp` is fork-friendly and you can always maintain a custom version which you `npm install && npm link` to continue using via `yo webapp` or a name of your choosing.
 
 
 ## License
