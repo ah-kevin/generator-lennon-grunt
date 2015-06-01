@@ -5,11 +5,9 @@
   "curly": true,
   "eqeqeq": true,
   "esnext": true,
-  "immed": true,<% if (testFramework === 'jasmine') { %>
-  "jasmine": true,<% } %>
+  "immed": true,
   "jquery": true,
-  "latedef": true,<% if (testFramework === 'mocha') { %>
-  "mocha": true,<% } %>
+  "latedef": true,
   "newcap": true,
   "noarg": true,
   "quotmark": "single",
