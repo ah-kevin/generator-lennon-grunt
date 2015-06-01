@@ -117,10 +117,8 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   writeIndex: function () {
-    this.indexFile = this.engine(
-      this.readFileAsString(join(this.sourceRoot(), 'index.html')),
-      this
-    );
+    this.indexFile = this.src.read('index.html');
+    this.indexFile = this.engine(this.indexFile, this);
 
     // wire Bootstrap plugins
     if (this.includeBootstrap && !this.includeSass) {
