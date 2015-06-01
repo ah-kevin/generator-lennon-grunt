@@ -6,7 +6,6 @@
   "esnext": true,
   "immed": true,
   "latedef": true,
-  "mocha" : true,
   "newcap": true,
   "noarg": true,
   "node": true,
