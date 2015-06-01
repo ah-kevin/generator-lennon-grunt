@@ -1,5 +1,5 @@
 'use strict';
-var join = require('path').join();
+var join = require('path').join;
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var wiredep = require('wiredep');
