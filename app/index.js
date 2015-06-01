@@ -8,6 +8,8 @@ module.exports = yeoman.generators.Base.extend({
   constructor: function () {
     yeoman.generators.Base.apply(this, arguments);
 
+
+
     this.option('skip-install', {
       desc: 'Skips the installation of dependencies',
       type: Boolean
@@ -167,6 +169,20 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   install: function () {
+
+    var howToInstall =
+        '\nAfter running ' +
+        chalk.yellow.bold('npm install & bower install') +
+        ', inject your' +
+        '\nfront end dependencies by running ' +
+        chalk.yellow.bold('grunt wiredep') +
+        '.';
+
+    if (this.options['skip-install']) {
+        this.log(howToInstall);
+         return;
+    }
+
     this.on('end', function () {
       if (this.options['skip-install']) {
         this.installDependencies({
